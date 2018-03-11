@@ -9,7 +9,6 @@ from django.contrib.auth import logout
 
 def index(request):
 	if request.user.is_authenticated:
-		logout(request)
 		return HttpResponse("Hello " + request.user.username)
 	else:
 		return HttpResponseRedirect('login/')
