@@ -8,6 +8,26 @@
 <body>
     <header>LUNCH OPTIONS</header>
     <p>Welcome {{ username }},</p>
+    
+    {% if selected_hotel is None or selected_time is None %}
+    <p>No option selected for today</p>>
+    {% else %}
+    <p>You've selected {{ selected_hotel }} at {{ selected_time }}</p>
+    {% endif %}
+    <ul>
+        <h3>List of hotel options</h3>
+        {% for hotel in hotels %}
+        <li>{{ hotel.hotel_name}}</li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        <h3>List of Time slots</h3>
+        {% for time_slot in time_slots %}
+        <li>{{ time_slot.time_slot}}</li>
+        {% endfor %}        
+    </ul>
+
     <footer>Powered by <a href="mailto:johnkishorem@gmail.com">JK</a></footer>
 </body>
 
