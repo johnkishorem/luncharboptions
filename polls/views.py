@@ -10,7 +10,8 @@ from django.urls import reverse
 
 def index(request):
 	if request.user.is_authenticated:
-		return HttpResponse("Hello " + request.user.username)
+		context = {'username' : request.user.username}
+		return render(request, 'polls/index.html', context)
 	else:
 		return HttpResponseRedirect(reverse('login'))
 
