@@ -28,8 +28,11 @@
 
     <ul>
         <h3>List of Time slots</h3>
-        {% for time_slot in time_slots %}
-        <li>{{ time_slot.time_slot}}</li>
+        {% for time_slot in context_time_slots %}
+        <li>
+            <p>Preferred Time : {{ time_slot.context_time_slot }}</p>
+            <p>Votes : {{ time_slot.context_time_slot_votes }}</p>
+        </li>
         {% endfor %}        
     </ul>
 

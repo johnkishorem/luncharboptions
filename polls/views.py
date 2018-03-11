@@ -34,9 +34,17 @@ def index(request):
 			context_hotels.append(context_hotel)
 
 		time_slots = time_option.objects.all()
+		context_time_slots = []
+		for each_time_slot in time_slots:
+			votes = arb_option.objects.filter(arb_time_option=each_time_slot, 
+				arb_pub_date=datetime.date.today()).count()
+			context_time = {'context_time_slot' : each_time_slot.time_slot, 
+				'context_time_slot_votes' : votes}
+			context_time_slots.append(context_time)
+
 		context = {'username' : request.user.username, 
 			'context_hotels' : context_hotels, 
-			'time_slots' : time_slots,
+			'context_time_slots' : context_time_slots,
 			'selected_hotel' : selected_hotel,
 			'selected_time': selected_time}
 		return render(request, 'polls/index.html', context)
