@@ -23,9 +23,19 @@ def index(request):
 			selected_time = None
 
 		hotels = hotel_option.objects.all()
+		context_hotels = []
+		for hotel in hotels:
+			votes = arb_option.objects.filter(arb_hotel_option=hotel, 
+				arb_pub_date=datetime.date.today()).count()
+			context_hotel = {'context_hotel_name' : hotel.hotel_name, 
+				'context_hotel_location' : hotel.hotel_location,
+				'context_hotel_budget' : hotel.hotel_avg_budget,
+				'context_hotel_votes' : votes}
+			context_hotels.append(context_hotel)
+
 		time_slots = time_option.objects.all()
 		context = {'username' : request.user.username, 
-			'hotels' : hotels, 
+			'context_hotels' : context_hotels, 
 			'time_slots' : time_slots,
 			'selected_hotel' : selected_hotel,
 			'selected_time': selected_time}

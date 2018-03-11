@@ -16,11 +16,12 @@
     {% endif %}
     <ul>
         <h3>List of hotel options</h3>
-        {% for hotel in hotels %}
+        {% for hotel in context_hotels %}
         <li>
-            <p>Hotel Name : {{ hotel.hotel_name}}</p>
-            <p>Location : {{ hotel.hotel_location }}</p>
-            <p>Per Person Cost : {{ hotel.hotel_avg_budget }}</p>
+            <p>Hotel Name : {{ hotel.context_hotel_name}}</p>
+            <p>Location : {{ hotel.context_hotel_location }}</p>
+            <p>Per Person Cost : {{ hotel.context_hotel_budget }}</p>
+            <p>Votes today : {{ hotel.context_hotel_votes }}</p>
         </li>
         {% endfor %}
     </ul>
