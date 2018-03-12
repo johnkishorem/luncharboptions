@@ -17,22 +17,22 @@
     <ul>
         <h3>List of hotel options</h3>
         {% for hotel in context_hotels %}
-        <li>
-            <p>Hotel Name : {{ hotel.context_hotel_name}}</p>
-            <p>Location : {{ hotel.context_hotel_location }}</p>
-            <p>Per Person Cost : {{ hotel.context_hotel_budget }}</p>
-            <p>Votes today : {{ hotel.context_hotel_votes }}</p>
-        </li>
+        <input type="radio" name="hotel_option" value="{{ hotel.context_hotel_name }}">
+            <label>Hotel Name : {{ hotel.context_hotel_name}}</label>
+                <ul>
+                    <li>Location : {{ hotel.context_hotel_location }}</li>
+                    <li>Per Person Cost : {{ hotel.context_hotel_budget }}</li>
+                    <li>Votes today : {{ hotel.context_hotel_votes }}</li>                    
+                </ul>
         {% endfor %}
     </ul>
 
     <ul>
         <h3>List of Time slots</h3>
         {% for time_slot in context_time_slots %}
-        <li>
-            <p>Preferred Time : {{ time_slot.context_time_slot }}</p>
-            <p>Votes : {{ time_slot.context_time_slot_votes }}</p>
-        </li>
+            <input type="radio" name="hotel_option" value="{{ time_slot.context_time_slot }}">
+                <label>{{ time_slot.context_time_slot }}</label>
+                Votes today : {{ time_slot.context_time_slot_votes }}</p>
         {% endfor %}        
     </ul>
 
