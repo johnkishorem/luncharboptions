@@ -8,6 +8,7 @@ from django.contrib.auth import logout
 from django.urls import reverse
 from django.contrib.auth.models import User
 from polls.models import hotel_option, time_option, arb_option
+from polls.forms import VoteTodayForm
 
 # Create your views here.
 
@@ -22,6 +23,7 @@ def index(request):
 			selected_hotel = None
 			selected_time = None
 
+		#Prepare hotel context
 		hotels = hotel_option.objects.all()
 		context_hotels = []
 		for hotel in hotels:
@@ -33,6 +35,7 @@ def index(request):
 				'context_hotel_votes' : votes}
 			context_hotels.append(context_hotel)
 
+		#Prepare time slots context
 		time_slots = time_option.objects.all()
 		context_time_slots = []
 		for each_time_slot in time_slots:
@@ -42,11 +45,22 @@ def index(request):
 				'context_time_slot_votes' : votes}
 			context_time_slots.append(context_time)
 
+		#Prepare form context
+		context_vote_form = VoteTodayForm()
+		vote_hotel_choices = [(x.id, x.hotel_name) for x in hotels]
+		vote_time_choices = [(x.id, x.time_slot) for x in time_slots]
+		context_vote_form.fields['vote_hotel'].choices = vote_hotel_choices
+		context_vote_form.fields['vote_time'].choices = vote_time_choices
+
+
 		context = {'username' : request.user.username, 
 			'context_hotels' : context_hotels, 
 			'context_time_slots' : context_time_slots,
 			'selected_hotel' : selected_hotel,
-			'selected_time': selected_time}
+			'selected_time': selected_time,
+			'context_vote_form' : context_vote_form}
+
+
 		return render(request, 'polls/index.html', context)
 	else:
 		return HttpResponseRedirect(reverse('login'))

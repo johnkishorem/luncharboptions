@@ -9,33 +9,35 @@
     <header>LUNCH OPTIONS</header>
     <p>Welcome {{ username }},</p>
     
-    {% if selected_hotel is None or selected_time is None %}
-    <p>No option selected for today</p>
-    {% else %}
-    <p>You've selected {{ selected_hotel }} at {{ selected_time }}</p>
-    {% endif %}
     <ul>
         <h3>List of hotel options</h3>
         {% for hotel in context_hotels %}
-        <input type="radio" name="hotel_option" value="{{ hotel.context_hotel_name }}">
-            <label>Hotel Name : {{ hotel.context_hotel_name}}</label>
+        <li>Hotel Name : {{ hotel.context_hotel_name}}
                 <ul>
                     <li>Location : {{ hotel.context_hotel_location }}</li>
                     <li>Per Person Cost : {{ hotel.context_hotel_budget }}</li>
                     <li>Votes today : {{ hotel.context_hotel_votes }}</li>                    
                 </ul>
+        </li>
         {% endfor %}
     </ul>
 
     <ul>
         <h3>List of Time slots</h3>
         {% for time_slot in context_time_slots %}
-            <input type="radio" name="hotel_option" value="{{ time_slot.context_time_slot }}">
-                <label>{{ time_slot.context_time_slot }}</label>
-                Votes today : {{ time_slot.context_time_slot_votes }}</p>
-        {% endfor %}        
+            <li>
+                {{ time_slot.context_time_slot }}
+                <uL>
+                <li>Votes today : {{ time_slot.context_time_slot_votes }}</li>
+                </uL>
+            </li>
+        {% endfor %} 
     </ul>
-
+    {% if selected_hotel is None or selected_time is None %}
+        {{ context_vote_form.as_p }}
+    {% else %}
+    <p>You've selected {{ selected_hotel }} at {{ selected_time }}</p>
+    {% endif %}
     <footer>Powered by <a href="mailto:johnkishorem@gmail.com">JK</a></footer>
 </body>
 
