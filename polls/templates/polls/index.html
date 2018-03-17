@@ -9,11 +9,12 @@
 </head>
 
 <body>
-    <header>LUNCH OPTIONS</header>
+    <header><div class="container">LUNCH OPTIONS</div></header>
+    <section><div class="container">
     <p>Welcome {{ username }},</p>
     
     <ul>
-        <h3>List of hotel options</h3>
+        <h5>List of hotel options</h5>
         {% for hotel in context_hotels %}
         <li>Hotel Name : {{ hotel.context_hotel_name}}
                 <ul>
@@ -26,7 +27,7 @@
     </ul>
 
     <ul>
-        <h3>List of Time slots</h3>
+        <h5>List of Time slots</h5>
         {% for time_slot in context_time_slots %}
             <li>
                 {{ time_slot.context_time_slot }}
@@ -41,7 +42,8 @@
     {% else %}
     <p>You've selected {{ selected_hotel }} at {{ selected_time }}</p>
     {% endif %}
-    <footer>Powered by <a href="mailto:johnkishorem@gmail.com">JK</a></footer>
+    </div></section>
+    <footer><div class="container">Powered by <a href="mailto:johnkishorem@gmail.com">JK</a></div></footer>
 </body>
 
 </html>
