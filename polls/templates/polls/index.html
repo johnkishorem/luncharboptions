@@ -41,7 +41,11 @@
         {% endfor %} 
     </ul>
     {% if selected_hotel is None or selected_time is None %}
-        {{ context_vote_form.as_p }}
+        <form method="POST">
+            {% csrf_token %}
+            {{ context_vote_form.as_p }}
+            <input type="submit" value="VOTE">
+        </form>
     {% else %}
     <p>You've selected {{ selected_hotel }} at {{ selected_time }}</p>
     {% endif %}

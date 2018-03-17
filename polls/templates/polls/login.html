@@ -3,9 +3,14 @@
 
 <head>
     <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/css/style.css' %}">    
 </head>
 
 <body>
+    <div class="container">
     <form method="POST">
         {% csrf_token %}
         <p>
@@ -18,6 +23,7 @@
         </p>
         <button type="submit">Login</button>
     </form>
+    </div>
 </body>
 
 </html>
