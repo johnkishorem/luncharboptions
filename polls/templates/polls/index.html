@@ -2,14 +2,17 @@
 <html>
 
 <head>
-    <title>Lunch Options</title>
+    <title>Lunch Options Arb</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'polls/css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'polls/css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/css/style.css' %}">
 </head>
 
 <body>
-    <header><div class="container">LUNCH OPTIONS</div></header>
+    <header>
+        <div class="container">LUNCH OPTIONS</div>
+    </header>
     <section><div class="container">
     <p>Welcome {{ username }},</p>
     
@@ -43,7 +46,11 @@
     <p>You've selected {{ selected_hotel }} at {{ selected_time }}</p>
     {% endif %}
     </div></section>
-    <footer><div class="container">Powered by <a href="mailto:johnkishorem@gmail.com">JK</a></div></footer>
+    <footer><div class="container">
+        <hr>
+        Copyright © 2018 <a href="mailto:johnkishorem@gmail.com">JK</a>
+        <hr>
+    </div></footer>
 </body>
 
 </html>
