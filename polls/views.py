@@ -71,4 +71,18 @@ def logout_view(request):
 	return HttpResponseRedirect(reverse('login'))
 
 def vote_view(request):
-	return HttpResponse("You're voting")
+	if request.method == 'POST':
+		u = User.objects.get(username=request.user.username)
+		selected_option = u.arb_option_set.filter(arb_pub_date=datetime.date.today())
+
+		if selected_option.count() > 0:
+			response = "You've already voted"
+		else:
+			h = hotel_option.objects.get(pk=request.POST['vote_hotel'])
+			t = time_option.objects.get(pk=request.POST['vote_time'])
+			opt = arb_option(arb_user=u, arb_hotel_option=h, arb_time_option=t)
+			opt.save()
+			response = "You've voted for " + h.hotel_name + " at " + t.time_slot
+	else:
+		response = "Invalid call"
+	return HttpResponse(response)
