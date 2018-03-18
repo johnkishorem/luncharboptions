@@ -12,7 +12,7 @@ from polls.forms import VoteTodayForm
 
 # Create your views here.
 
-def index(request):
+def index_view(request):
 	if request.user.is_authenticated:
 		logged_user = User.objects.get(username=request.user.username)
 		selected_option = logged_user.arb_option_set.filter(arb_pub_date=datetime.date.today())
@@ -63,12 +63,12 @@ def index(request):
 
 		return render(request, 'polls/index.html', context)
 	else:
-		return HttpResponseRedirect(reverse('login'))
+		return HttpResponseRedirect(reverse('polls:login'))
 
 
 def logout_view(request):
 	logout(request)
-	return HttpResponseRedirect(reverse('login'))
+	return HttpResponseRedirect(reverse('polls:login'))
 
 def vote_view(request):
 	if request.method == 'POST':
@@ -76,13 +76,13 @@ def vote_view(request):
 		selected_option = u.arb_option_set.filter(arb_pub_date=datetime.date.today())
 
 		if selected_option.count() > 0:
-			response = "You've already voted"
+			#You've already voted
+			pass
 		else:
 			h = hotel_option.objects.get(pk=request.POST['vote_hotel'])
 			t = time_option.objects.get(pk=request.POST['vote_time'])
 			opt = arb_option(arb_user=u, arb_hotel_option=h, arb_time_option=t)
 			opt.save()
-			response = "You've voted for " + h.hotel_name + " at " + t.time_slot
 	else:
-		response = "Invalid call"
-	return HttpResponse(response)
+		pass
+	return HttpResponseRedirect(reverse('polls:index'))
