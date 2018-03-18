@@ -41,7 +41,7 @@
         {% endfor %} 
     </ul>
     {% if selected_hotel is None or selected_time is None %}
-        <form method="POST">
+        <form method="POST" action="{% url 'polls:vote' %}">
             {% csrf_token %}
             {{ context_vote_form.as_p }}
             <input type="submit" value="VOTE">

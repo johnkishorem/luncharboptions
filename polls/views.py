@@ -69,3 +69,6 @@ def index(request):
 def logout_view(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('login'))
+
+def vote_view(request):
+	return HttpResponse("You're voting")
