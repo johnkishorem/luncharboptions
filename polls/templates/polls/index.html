@@ -34,10 +34,7 @@
         <h5>List of Time slots</h5>
         {% for time_slot in context_time_slots %}
             <li>
-                {{ time_slot.context_time_slot }}
-                <uL>
-                <li>Votes today : {{ time_slot.context_time_slot_votes }}</li>
-                </uL>
+                {{ time_slot.context_time_slot }} Votes today : {{ time_slot.context_time_slot_votes }}
             </li>
         {% endfor %} 
     </ul>
