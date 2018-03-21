@@ -93,6 +93,9 @@ def register_view(request):
 	if request.user.is_authenticated:
 		return HttpResponseRedirect(reverse("polls:index"))
 	else:
-		forms = UserCreationForm()
+		if request.method == 'POST':
+			forms = UserCreationForm(request.POST)
+		else:
+			forms = UserCreationForm()
 		context = { 'forms' : forms}
-		return render(request, 'polls/register.html', context)
+		return render(request, 'polls/register.html', {'forms':forms})
