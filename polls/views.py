@@ -5,6 +5,7 @@ import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse
 from django.contrib.auth.models import User
 from polls.models import hotel_option, time_option, arb_option
@@ -92,4 +93,6 @@ def register_view(request):
 	if request.user.is_authenticated:
 		return HttpResponseRedirect(reverse("polls:index"))
 	else:
-		return HttpResponse("Create a new user")
+		forms = UserCreationForm()
+		context = { 'forms' : forms}
+		return render(request, 'polls/register.html', context)
