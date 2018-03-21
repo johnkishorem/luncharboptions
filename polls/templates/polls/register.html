@@ -10,7 +10,11 @@
 </head>
 
 <body>
+    <header>  
+        <div class="container">LUNCH OPTIONS</div>
+    </header>    
     <div class="container">
+    <p>REGISTRATION PAGE<a href="{% url 'polls:login' %}" class="u-pull-right">&lt;BACK TO LOGIN</a></p>
     <form method="POST">
         {% csrf_token %}
         {{ forms.as_p }}
