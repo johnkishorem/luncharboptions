@@ -10,7 +10,11 @@
 </head>
 
 <body>
+    <header>
+        <div class="container">LUNCH OPTIONS</div>
+    </header>
     <div class="container">
+    <p>LOGIN PAGE<a href="{% url 'polls:register' %}" class="u-pull-right">REGISTER</a></p>
     <form method="POST">
         {% csrf_token %}
         <p>
