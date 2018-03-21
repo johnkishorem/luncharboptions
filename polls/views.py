@@ -95,7 +95,9 @@ def register_view(request):
 	else:
 		if request.method == 'POST':
 			forms = UserCreationForm(request.POST)
+			if forms.is_valid():
+				forms.save()
+				return HttpResponseRedirect(reverse("polls:login"))
 		else:
 			forms = UserCreationForm()
-		context = { 'forms' : forms}
 		return render(request, 'polls/register.html', {'forms':forms})
