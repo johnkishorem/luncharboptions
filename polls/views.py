@@ -86,3 +86,10 @@ def vote_view(request):
 	else:
 		pass
 	return HttpResponseRedirect(reverse('polls:index'))
+
+
+def register_view(request):
+	if request.user.is_authenticated:
+		return HttpResponseRedirect(reverse("polls:index"))
+	else:
+		return HttpResponse("Create a new user")
