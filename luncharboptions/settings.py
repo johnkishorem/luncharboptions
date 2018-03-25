@@ -28,7 +28,7 @@ SECRET_KEY = '@3b3a&zyhz6tun!a96j2g2m663h@c+-85k#c(3y5!!_7(f#5jn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lunchoptionsarb.herokuapp.com']
 
 
 # Application definition
