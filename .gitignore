@@ -19,3 +19,6 @@ __pycache__/
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+
+#Django static files
+staticfiles
