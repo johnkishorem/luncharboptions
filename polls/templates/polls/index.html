@@ -19,15 +19,22 @@
     
     <ul>
         <h5>List of hotel options</h5>
+        <table>
+            <tr>
+                <th>Hotel Name</th>
+                <th>Location</th>
+                <th>Per Person Cost</th>
+                <th>Votes today</th>
+            </tr>
         {% for hotel in context_hotels %}
-        <li>Hotel Name : {{ hotel.context_hotel_name}}
-                <ul>
-                    <li>Location : {{ hotel.context_hotel_location }}</li>
-                    <li>Per Person Cost : {{ hotel.context_hotel_budget }}</li>
-                    <li>Votes today : {{ hotel.context_hotel_votes }}</li>                    
-                </ul>
-        </li>
+            <tr>
+            <td>{{ hotel.context_hotel_name }}</td>
+            <td>{{ hotel.context_hotel_location }}</td>
+            <td>{{ hotel.context_hotel_budget }}</td>
+            <td>{{ hotel.context_hotel_votes }}</td>
+            </tr>
         {% endfor %}
+        </table>
     </ul>
 
     <ul>
